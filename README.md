@@ -1,2 +1,2 @@
 # coding-project-template
-This is the Final Project for Emotion Detection App. 
+This is the Final project for Emotion Detection App. 
