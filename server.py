@@ -3,35 +3,36 @@
     localhost:5000.
 '''
 # Import Flask, render_template, request from the flask pramework package : TODO
-# Import the sentiment_analyzer function from the package created: TODO
+# Import the emotion_detector function from the package created: TODO
 from flask import Flask, render_template, request
-from SentimentAnalysis.sentiment_analysis import sentiment_analyzer
+from emotion_detection.emotion_detection import emotion_detector
 
 #Initiate the flask app : TODO
-app = Flask("Sentiment Analyzer")
+app = Flask("Emotion Detector")
 
-@app.route("/sentimentAnalyzer")
-def sent_analyzer():
-    '''
-    Retrieve the text to analyze from the request arguments,
-    process it through the sentiment analyzer, and return the result.
-    '''
+@app.route("/emotionDetector")
+def emot_detector():
+    """
+    Function to receive text and return emotion analysis
+    """
 	# Retrieve the text to analyze from the request arguments
     text_to_analyze = request.args.get('textToAnalyze')
 
-	# Pass the text to the sentiment_analyzer function and store the response
-    response = sentiment_analyzer(text_to_analyze)
+	# Pass the text to the emotion_detector function and store the response
+    response = emotion_detector(text_to_analyze)
+
+    return response
 
 	# Extract the label and score from the response
-    label = response['label']
-    score = response['score']
+#    label = response['label']
+ #   score = response['score']
 
 		# Check if the label is None, indicating an error or invalid input
-    if label is None:
+ #   if label is None:
         return "Invalid input! Try again."
  #   else:
         # Return a formatted string with the sentiment label and score
-    return f"The given text has been identified as {label} with a score of {score}."
+ #   return f"The given text has been identified as {label} with a score of {score}."
 
 
 @app.route("/")
